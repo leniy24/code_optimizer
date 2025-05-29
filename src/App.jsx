@@ -12,21 +12,33 @@ function App() {
   const [code, setCode] = useState(defaultCode);
   const [optimizedCode, setOptimizedCode] = useState('');
   const [isOptimizing, setIsOptimizing] = useState(false);
+  const [error, setError] = useState(null);
 
   const handleOptimize = async () => {
     setIsOptimizing(true);
+    setError(null);
+    
     try {
-      // In a real implementation, this would call your C++ optimizer
-      // For now, we'll simulate the optimization
-      setTimeout(() => {
-        const simulated = code.replace(/(\d+)\s*\+\s*(\d+)/g, (_, a, b) => 
-          String(Number(a) + Number(b))
-        );
-        setOptimizedCode(simulated);
-        setIsOptimizing(false);
-      }, 1000);
+      const response = await fetch('/api/optimize', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ code }),
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.error || 'Optimization failed');
+      }
+
+      const data = await response.json();
+      setOptimizedCode(data.optimizedCode);
     } catch (error) {
-      console.error('Optimization failed:', error);
+      console.error('Optimization error:', error);
+      setError(error.message);
+      setOptimizedCode('');
+    } finally {
       setIsOptimizing(false);
     }
   };
@@ -73,6 +85,12 @@ function App() {
             </div>
           </div>
         </div>
+
+        {error && (
+          <div className="mt-4 p-4 bg-red-100 border border-red-400 text-red-700 rounded-lg">
+            {error}
+          </div>
+        )}
 
         <div className="mt-8 flex justify-center">
           <button
