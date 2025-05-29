@@ -1,0 +1,3 @@
+/home/adi/Desktop/pblcd/build/CMakeFiles/code_optimizer.dir
+/home/adi/Desktop/pblcd/build/CMakeFiles/edit_cache.dir
+/home/adi/Desktop/pblcd/build/CMakeFiles/rebuild_cache.dir

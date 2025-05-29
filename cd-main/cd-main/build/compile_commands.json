@@ -1,0 +1,20 @@
+[
+{
+  "directory": "/home/adi/Desktop/pblcd/build",
+  "command": "/usr/bin/c++  -I/home/adi/Desktop/pblcd/include -g -std=gnu++17 -O2 -Wall -Wextra -o CMakeFiles/code_optimizer.dir/src/main.cpp.o -c /home/adi/Desktop/pblcd/src/main.cpp",
+  "file": "/home/adi/Desktop/pblcd/src/main.cpp",
+  "output": "CMakeFiles/code_optimizer.dir/src/main.cpp.o"
+},
+{
+  "directory": "/home/adi/Desktop/pblcd/build",
+  "command": "/usr/bin/c++  -I/home/adi/Desktop/pblcd/include -g -std=gnu++17 -O2 -Wall -Wextra -o CMakeFiles/code_optimizer.dir/src/optimizer.cpp.o -c /home/adi/Desktop/pblcd/src/optimizer.cpp",
+  "file": "/home/adi/Desktop/pblcd/src/optimizer.cpp",
+  "output": "CMakeFiles/code_optimizer.dir/src/optimizer.cpp.o"
+},
+{
+  "directory": "/home/adi/Desktop/pblcd/build",
+  "command": "/usr/bin/c++  -I/home/adi/Desktop/pblcd/include -g -std=gnu++17 -O2 -Wall -Wextra -o CMakeFiles/code_optimizer.dir/src/parser.cpp.o -c /home/adi/Desktop/pblcd/src/parser.cpp",
+  "file": "/home/adi/Desktop/pblcd/src/parser.cpp",
+  "output": "CMakeFiles/code_optimizer.dir/src/parser.cpp.o"
+}
+]

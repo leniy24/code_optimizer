@@ -1,0 +1,1 @@
+/usr/bin/c++ -g CMakeFiles/code_optimizer.dir/src/main.cpp.o CMakeFiles/code_optimizer.dir/src/optimizer.cpp.o CMakeFiles/code_optimizer.dir/src/parser.cpp.o -o code_optimizer 
