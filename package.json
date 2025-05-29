@@ -4,10 +4,11 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "dev": "concurrently \"npm run server\" \"vite\"",
     "build": "vite build",
     "preview": "vite preview",
-    "server": "node server.js"
+    "server": "node server.js",
+    "compile": "cmake -B build && cmake --build build"
   },
   "dependencies": {
     "react": "^18.2.0",
@@ -17,7 +18,8 @@
     "@heroicons/react": "^2.0.18",
     "express": "^4.18.2",
     "body-parser": "^1.20.2",
-    "cors": "^2.8.5"
+    "cors": "^2.8.5",
+    "concurrently": "^8.2.2"
   },
   "devDependencies": {
     "@types/react": "^18.2.15",
