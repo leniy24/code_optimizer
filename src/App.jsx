@@ -19,7 +19,7 @@ function App() {
     setError(null);
     
     try {
-      const response = await fetch('/api/optimize', {
+      const response = await fetch('http://localhost:3000/api/optimize', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

@@ -13,6 +13,9 @@ const app = express();
 app.use(cors());
 app.use(bodyParser.json());
 
+// Ensure output directory exists
+await fs.mkdir(join(__dirname, 'output'), { recursive: true });
+
 app.post('/api/optimize', async (req, res) => {
   try {
     const { code } = req.body;
@@ -25,7 +28,7 @@ app.post('/api/optimize', async (req, res) => {
     await fs.writeFile(inputPath, code);
 
     // Path to the optimizer executable
-    const optimizerPath = join(__dirname, 'cd-main', 'cd-main', 'build', 'code_optimizer');
+    const optimizerPath = join(__dirname, 'build', 'code_optimizer');
 
     // Execute the C++ optimizer
     exec(`${optimizerPath} ${inputPath}`, async (error, stdout, stderr) => {
@@ -36,11 +39,12 @@ app.post('/api/optimize', async (req, res) => {
         }
 
         // Read the optimized output
-        const outputPath = join(__dirname, 'cd-main', 'cd-main', 'output', `optimized_${inputPath.split('/').pop()}`);
+        const outputPath = join(__dirname, 'output', 'optimized_temp_input.c');
         const optimizedCode = await fs.readFile(outputPath, 'utf8');
 
         // Clean up temporary files
-        await fs.unlink(inputPath);
+        await fs.unlink(inputPath).catch(console.error);
+        await fs.unlink(outputPath).catch(console.error);
 
         res.json({ optimizedCode });
       } catch (err) {
